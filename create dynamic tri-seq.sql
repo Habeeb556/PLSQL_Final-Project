@@ -16,7 +16,7 @@ BEGIN
         Trg_name:=SEQ_RECORD.table_name||'_TRG' ;
                     -- Sequence
                     EXECUTE IMMEDIATE 'CREATE SEQUENCE '|| Seq_name ||' 
-                    START WITH 1001
+                    START WITH 1
                       MAXVALUE 999999999999999999999999999
                       MINVALUE 1
                       NOCYCLE
@@ -42,6 +42,6 @@ BEGIN
         dbms_output.put_line('Done');
 END;
 
-
+commit;
 show errors;
 
