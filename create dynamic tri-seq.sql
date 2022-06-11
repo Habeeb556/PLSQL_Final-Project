@@ -14,6 +14,7 @@ BEGIN
         BEGIN
         Seq_name:=SEQ_RECORD.table_name||'_SEQ' ;
         Trg_name:=SEQ_RECORD.table_name||'_TRG' ;
+                    
                     -- Sequence
                     EXECUTE IMMEDIATE 'CREATE SEQUENCE '|| Seq_name ||' 
                     START WITH 1
@@ -22,24 +23,25 @@ BEGIN
                       NOCYCLE
                       CACHE 20
                       NOORDER';
-                    -- Trigger
+                   dbms_output.put_line(Seq_name||': Added successfully');
+                                       
+                      -- Trigger
                     EXECUTE IMMEDIATE 'CREATE OR REPLACE TRIGGER '||Trg_name||' 
                     BEFORE INSERT
                     ON '||SEQ_RECORD.table_name||'
                     REFERENCING NEW AS New OLD AS Old
                     FOR EACH ROW
                     BEGIN
-                    -- For Toad: Highlight column ID
                       :new.'||SEQ_RECORD.column_name|| ':= '||Seq_name||'.nextval;
-                    END';
+                    END;';
                     
                     exception
                     when object_already_exists then
                     dbms_output.put_line(Seq_name||': Skipped already exists');
                     continue;
                     END;
+                    
         END LOOP;
-        dbms_output.put_line('Done');
 END;
 
 commit;
