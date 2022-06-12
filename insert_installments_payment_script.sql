@@ -39,15 +39,15 @@ begin
     for contract_record in contract_cursor loop
     months_add:=insert_INSTALLMENTS_PAID(contract_record.contract_id, v_new_date, install_no, v_amount);
     dbms_output.put_line(months_add ||' '||v_new_date||' '||install_no);
-    insert into INSTALLMENTS_PAID (CONTRACT_ID, INSTALLMENT_DATE, INSTALLMENT_AMOUNT)
-    values (contract_record.CONTRACT_ID, v_new_date, v_amount);
+    insert into INSTALLMENTS_PAID (CONTRACT_ID, INSTALLMENT_DATE, INSTALLMENT_AMOUNT, PAID)
+    values (contract_record.CONTRACT_ID, v_new_date, v_amount, 0);
     counter := 1;
     while (counter<install_no)
         loop
         v_new_date:= add_months(v_new_date, months_add);
         dbms_output.put_line('new date: '||v_new_date);
-        insert into INSTALLMENTS_PAID (CONTRACT_ID, INSTALLMENT_DATE, INSTALLMENT_AMOUNT)
-        values (contract_record.CONTRACT_ID, v_new_date, v_amount);
+        insert into INSTALLMENTS_PAID (CONTRACT_ID, INSTALLMENT_DATE, INSTALLMENT_AMOUNT, PAID)
+        values (contract_record.CONTRACT_ID, v_new_date, v_amount, 0);
         counter := counter + 1;
         end loop;
     end loop;
