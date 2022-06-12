@@ -1,5 +1,5 @@
 set serveroutput on
-create or replace procedure update_payment_installemnts_no(v_contract_id number)
+create or replace procedure update_payment_installemnts_no (v_contract_id number)
 is
     cnt number(2);
     diff_month number(2);
@@ -13,10 +13,10 @@ begin
     where contract_id = v_contract_id;
     
      case v_contype
-     when 'ANNUAL' then cnt:=12;
-     when 'QUARTER' then cnt:=3;
-     when 'MONTHLY' then cnt:=1;
-     when 'HALF_ANNUAL' then cnt:=6;
+         when 'ANNUAL' then cnt:=12;
+         when 'QUARTER' then cnt:=3;
+         when 'MONTHLY' then cnt:=1;
+         when 'HALF_ANNUAL' then cnt:=6;
      end case;
     
     diff_month := MONTHS_BETWEEN(v_enddate, v_startdate);
