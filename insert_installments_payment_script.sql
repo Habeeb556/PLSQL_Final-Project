@@ -29,6 +29,7 @@ begin
     
 end insert_INSTALLMENTS_PAID;
 
+--call
 declare
     months_add number;
     counter number;
