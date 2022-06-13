@@ -18,4 +18,4 @@ The schema provided below. You can see the columns that **link** tables together
 
 $~$
 
-Under the supervision of Sir. [Yahia Momtaz](https://www.linkedin.com/in/yahia-momtaz-20a37840), Technical Instructor, Information Technology Institute.
+**Under the supervision of:** Sir. [Yahia Momtaz](https://www.linkedin.com/in/yahia-momtaz-20a37840), Technical Instructor - Information Technology Institute.
