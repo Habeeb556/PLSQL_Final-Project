@@ -1,6 +1,8 @@
 # PLSQL_Final-Project
 ITI Database Administration Track - Advanced PL/SQL Project
 
+Project description video: https://youtu.be/tP3Ig0ny3OE.
+
 For this project, you will filling PAYMENT_INSTALLMENTS_NO in CONTRACTS table **with update this column**, and fill INSTALLMENTS_PAID table **with insert:**
 ```
 - CONTRACT_ID 
