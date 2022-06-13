@@ -4,11 +4,12 @@ return number
 is
     cnt number(2);
     diff_month number(2);
+    v_deposit number := 0;
     v_fees CONTRACTS.CONTRACT_TOTAL_FEES%type;
     v_enddate CONTRACTS.CONTRACT_ENDDATE%type;
     v_contype CONTRACTS.CONTRACT_PAYMENT_TYPE%type;
 begin
-    select CONTRACT_STARTDATE, CONTRACT_ENDDATE, CONTRACT_PAYMENT_TYPE, CONTRACT_TOTAL_FEES into v_startdate, v_enddate, v_contype, v_fees
+    select CONTRACT_STARTDATE, CONTRACT_ENDDATE, CONTRACT_PAYMENT_TYPE, CONTRACT_TOTAL_FEES, CONTRACT_DEPOSIT_FEES into v_startdate, v_enddate, v_contype, v_fees, v_deposit
     from contracts
     where contract_id = v_contract_id;
     
@@ -21,7 +22,8 @@ begin
     
     diff_month := MONTHS_BETWEEN(v_enddate, v_startdate);
     install_no:=diff_month/cnt;
-    amount:= v_fees/install_no;
+    if (v_deposit is null) then v_deposit:=0; end if;
+    amount:= (v_fees-v_deposit)/install_no;
     
     return cnt;
     
