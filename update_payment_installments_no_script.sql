@@ -2,7 +2,7 @@ set serveroutput on
 create or replace procedure update_payment_installemnts_no (v_contract_id number)
 is
     cnt number(2);
-    diff_month number(2);e;
+    diff_month number(2);
     v_contype CONTRACTS.CONTRACT_PAYMENT_TYPE%type;
 begin
     select CONTRACT_STARTDATE, CONTRACT_ENDDATE, CONTRACT
